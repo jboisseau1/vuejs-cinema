@@ -12,7 +12,7 @@ Object.defineProperty(Vue.prototype, '$moment', {
   }
 });
 
-import { checkFilter } from './util/bus.js';
+import { checkFilter, setDay } from './util/bus.js';
 const bus = new Vue();
 Object.defineProperty(Vue.prototype, '$bus', {
   get() {
@@ -24,6 +24,10 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 const router = new VueRouter({ routes });
+
+import Tooltip from './util/Tooltip';
+Vue.use(Tooltip);
+
 new Vue({
   el: '#app',
   data: {
@@ -41,6 +45,7 @@ new Vue({
       this.movies = response.data;
     });
     this.$bus.$on('check-filter', checkFilter.bind(this));
+    this.$bus.$on('set-day', setDay.bind(this));
   },
   router
 });

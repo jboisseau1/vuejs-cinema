@@ -8,5 +8,8 @@ function checkFilter(catagory, title, checked) {
     }
   }
 }
+function setDay(day) {
+  this.day = day;
+}
 
-export { checkFilter };
+export { checkFilter, setDay };
